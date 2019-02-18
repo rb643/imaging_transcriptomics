@@ -33,6 +33,9 @@ neurosynthcloud <- function(image, nterms, ...) {
   df$word <- as.character(as.factor(df$word))
   df <- df[order(df$freq,decreasing = TRUE), ]
   
+  write.table(df,file = "freq_words.csv",quote=FALSE,row.names = FALSE,col.names = TRUE, sep = ",")
+  
+  
   ## get the top set of terms
   df_top <- df[1:nterms, ]
   df_bottom <- df[(nrow(df) - (nterms-1)):nrow(df), ]
